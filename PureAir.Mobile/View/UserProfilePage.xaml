@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MonkeyFinder.View.UserProfilePage"
+             xmlns:viewModel="clr-namespace:MonkeyFinder.ViewModel"
+             xmlns:model="clr-namespace:MonkeyFinder.Model"
+             x:DataType="viewModel:UserProfileViewModel"
+             xmlns:res="clr-namespace:MonkeyFinder.Resources.Languages"
+             Title="{Binding UserName}">
+    <Grid>
+        <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
+            <RefreshView
+            Grid.ColumnSpan="2"
+            IsRefreshing="{Binding IsRefreshing}">
+
+                <Grid RowDefinitions="Auto,Auto,*">
+                    <BoxView
+                    BackgroundColor="{StaticResource Primary}"
+                    Grid.RowSpan="2"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"/>
+
+                    <VerticalStackLayout Grid.Row="2" Padding="10" Spacing="10">
+                        <!-- Add this -->
+
+                        <StackLayout Orientation="Horizontal" Spacing="5">
+                            <Button FontFamily="OpenSansRegular" TextColor="{StaticResource SecondaryColor}" 
+                                    FontSize="16" Text="{x:Static res:Strings.Button_SignOut}" VerticalOptions="Start" HorizontalOptions="StartAndExpand" Padding="10" Command="{Binding SignOutCommand}"></Button>
+
+                            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
+                                <Label Style="{StaticResource MediumLabel}" Text="En"/>
+                                <Switch x:Name ="LangSwitch"  Toggled="Switch_OnToggled"  IsToggled="{Binding IsToggled}" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" 
+                                       >
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="On">
+                                                <VisualState.Setters>
+                                                    <Setter Property="ThumbColor"
+                                                            Value="{StaticResource Primary}" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="Off">
+                                                <VisualState.Setters>
+                                                    <Setter Property="ThumbColor"
+                                                            Value="{StaticResource Primary}" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                </Switch>
+                                <Label Style="{StaticResource SmallLabel}" Text="Ua"/>
+                            </StackLayout>
+
+
+                        </StackLayout>
+
+                        <Label Style="{StaticResource MediumLabel}" Text="{Binding User.UserId,  StringFormat='Id: {0}'}" />
+                        <StackLayout Orientation="Horizontal">
+                            <Label Style="{StaticResource MediumLabel}" Text="{x:Static res:Strings.SignIn_Page_FirstName_Label}"/>
+                            <Label Style="{StaticResource MediumLabel}" Text="{Binding User.FirstName, StringFormat=': {0}'}" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Style="{StaticResource MediumLabel}" Text="{x:Static res:Strings.SignIn_Page_LastName_Label}" />
+                            <Label Style="{StaticResource MediumLabel}" Text="{Binding User.LastName, StringFormat=': {0}'}" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Style="{StaticResource MediumLabel}" Text="{x:Static res:Strings.SignIn_Page_Email_Label}" />
+                            <Label Style="{StaticResource MediumLabel}" Text="{Binding User.Email, StringFormat=': {0}'}" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Style="{StaticResource MediumLabel}" Text="{x:Static res:Strings.User_JobTitle}" />
+                            <Label Style="{StaticResource MediumLabel}" Text="{Binding User.JobTitle, StringFormat=': {0}'}" />
+                        </StackLayout>
+                        <Button
+                            Grid.Row="4"
+                            Grid.RowSpan="4"
+                            Margin="8"
+                            Command="{Binding GetPassCommand }"
+                            IsEnabled="{Binding IsNotBusy}"
+                            Style="{StaticResource ButtonOutline}"
+                            Text="{x:Static res:Strings.Button_GetData}" />
+                        <StackLayout Margin="0">
+                            <Label Style="{StaticResource welcome}" FontSize="26" Text="{x:Static res:Strings.Page_Last_Data_Label}" FontFamily="InterSemiBold"/>
+
+                        </StackLayout>
+                        <StackLayout Margin="20,0,0,0"  Orientation="Horizontal">
+                            <Label Style="{StaticResource MediumLabel}" Text="{x:Static res:Strings.User_Pass}"/>
+                            <Label Style="{StaticResource MediumLabel}" Text="{Binding Pass.PassId, StringFormat=': {0}'}" />
+                        </StackLayout>
+                        <StackLayout Margin="20,0,0,0"  Orientation="Horizontal">
+                            <Label Style="{StaticResource MediumLabel}" Text="{x:Static res:Strings.Page_WorkspaceLabel}" />
+                            <Label Style="{StaticResource MediumLabel}" Text="{Binding Pass.WorkspaceId, StringFormat=': {0}'}" />
+                        </StackLayout>
+                        <StackLayout Margin="20,0,0,0"  Orientation="Horizontal">
+                            <Label Style="{StaticResource MediumLabel}" Text="{x:Static res:Strings.Page_Timestamp_Label}" />
+                            <Label Style="{StaticResource MediumLabel}" Text="{Binding Pass.Timestamp, StringFormat=': {0}'}" />
+                        </StackLayout>
+                        <StackLayout Margin="20,0,0,20" Orientation="Horizontal">
+                            <Label Style="{StaticResource MediumLabel}" Text="{x:Static res:Strings.Page_Decision_Label}" />
+                            <Label Style="{StaticResource MediumLabel}" Text="{Binding Decision, StringFormat=': {0}'}" />
+                        </StackLayout>
+                    </VerticalStackLayout>
+
+
+                    <ActivityIndicator
+                    Grid.RowSpan="2"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="Fill"
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}"
+                    Color="{StaticResource Primary}"
+                    VerticalOptions="Center" />
+                </Grid>
+
+
+
+
+            </RefreshView>
+        </ScrollView>
+    </Grid>
+</ContentPage>

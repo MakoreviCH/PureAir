@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage x:Name="Details" 
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup‐compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:model="clr-namespace:MonkeyFinder.Model"
+             xmlns:viewModel="clr-namespace:MonkeyFinder.ViewModel"
+             x:Class="MonkeyFinder.View.WorkspacePage"
+             xmlns:res="clr-namespace:MonkeyFinder.Resources.Languages"
+             Title="{Binding Workspace.WorkspaceName, StringFormat='{0}'}"
+             x:DataType="viewModel:WorkspaceDetailsViewModel">
+    <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
+        <Grid RowDefinitions="Auto,Auto,*" x:Name="MainGrid">
+            <BoxView x:Name="BoxView"
+                     BackgroundColor="{StaticResource Primary}"
+                     Grid.RowSpan="2"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="Fill"/>
+
+                <VerticalStackLayout x:Name="VerticalStack" Grid.Row="1" Padding="10" Spacing="10">
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Style="{StaticResource MediumLabel}" Text="{x:Static res:Strings.Page_WorkspaceLabel}" />
+                    <Label Style="{StaticResource MediumLabel}" Text="{Binding Workspace.Id, StringFormat=': {0}'}" />
+                </StackLayout>
+                    <Label Style="{StaticResource welcome}" FontSize="16" Text="{x:Static res:Strings.Page_Threshold_Label}" FontFamily="InterSemiBold"/>
+                <StackLayout Margin="20,0,0,0" Orientation="Horizontal">
+                    <Label Style="{StaticResource MediumLabel}" Text="{x:Static res:Strings.Page_Temperature_Label}" />
+                    <Label Style="{StaticResource MediumLabel}" Text="{Binding Workspace.TemperatureThreshold, StringFormat=': {0} C'}" />
+                </StackLayout>
+                <StackLayout Margin="20,0,0,0" Orientation="Horizontal">
+                    <Label Style="{StaticResource MediumLabel}" Text="{x:Static res:Strings.Page_Humidity_Label}" />
+                    <Label Style="{StaticResource MediumLabel}" Text="{Binding Workspace.HumidityThreshold, StringFormat=': {0}%'}" />
+                </StackLayout>
+                <StackLayout Margin="20,0,0,0" Orientation="Horizontal">
+                    <Label Style="{StaticResource MediumLabel}" Text="{x:Static res:Strings.Page_Gas_Label}" />
+                    <Label Style="{StaticResource MediumLabel}" Text="{Binding Workspace.GasThreshold, StringFormat=': {0} ppm'}" />
+                </StackLayout>
+
+                </VerticalStackLayout>
+ 
+
+                <Button
+                Grid.Row="3"
+                Grid.RowSpan="3"
+                Margin="8"
+                Command="{Binding GetDatasCommand }"
+                IsEnabled="{Binding IsNotBusy}"
+                Style="{StaticResource ButtonOutline}"
+                Text="{x:Static res:Strings.Button_GetData}" />
+
+            <VerticalStackLayout x:Name="VerticalStacking" Grid.Row="2" Padding="10" Spacing="10">
+                <StackLayout Margin="0">
+                    <Label Style="{StaticResource welcome}" FontSize="26" Text="{x:Static res:Strings.Page_Last_Data_Label}" FontFamily="InterSemiBold"/>
+
+                </StackLayout>
+                <StackLayout Margin="20,0,0,0" Orientation="Horizontal">
+                    <Label Style="{StaticResource MediumLabel}" Text="{x:Static res:Strings.Page_Timestamp_Label}" />
+                    <Label Style="{StaticResource MediumLabel}" Text="{Binding Data.Timestamp, StringFormat=': {0}'}" />
+                </StackLayout>
+                <StackLayout Margin="20,0,0,0" Orientation="Horizontal">
+                    <Label Style="{StaticResource MediumLabel}" Text="{x:Static res:Strings.Page_Temperature_Label}" />
+                    <Label Style="{StaticResource MediumLabel}" Text="{Binding Data.Temperature, StringFormat=': {0} C'}" />
+                </StackLayout>
+                <StackLayout Margin="20,0,0,0" Orientation="Horizontal">
+                    <Label Style="{StaticResource MediumLabel}" Text="{x:Static res:Strings.Page_Humidity_Label}" />
+                    <Label Style="{StaticResource MediumLabel}" Text="{Binding Data.Humidity, StringFormat=': {0}%'}" />
+                </StackLayout>
+                <StackLayout Margin="20,0,0,0" Orientation="Horizontal">
+                    <Label Style="{StaticResource MediumLabel}" Text="{x:Static res:Strings.Page_Gas_Label}" />
+                    <Label Style="{StaticResource MediumLabel}" Text="{Binding Data.GasQuality, StringFormat=': {0} ppm'}" />
+                </StackLayout>
+
+
+                <StackLayout Margin="20,0,0,20" Orientation="Horizontal">
+                    <Label Style="{StaticResource MediumLabel}" Text="{x:Static res:Strings.Page_Decision_Label}" />
+                    <Label Style="{StaticResource MediumLabel}" Text="{Binding Decision, StringFormat=': {0}'}" />
+                </StackLayout>
+
+            </VerticalStackLayout>
+
+        </Grid>
+
+    </ScrollView>
+</ContentPage>

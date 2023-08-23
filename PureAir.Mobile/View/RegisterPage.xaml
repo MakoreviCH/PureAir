@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MonkeyFinder.View.RegisterPage"             xmlns:viewmodel="clr-namespace:MonkeyFinder.ViewModel"
+             xmlns:views="clr-namespace:MonkeyFinder.View"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="True"
+             Title="{x:Static res:Strings.SignUp_Title}"
+             x:DataType="viewmodel:RegisterViewModel"
+             xmlns:res="clr-namespace:MonkeyFinder.Resources.Languages">
+    <ScrollView>
+    <Grid BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
+        <StackLayout Margin="10">
+            <Image Source="logo.png" HeightRequest="30"  HorizontalOptions="StartAndExpand"/>
+
+            <StackLayout Margin="0,10">
+                    <Label Style="{StaticResource welcome}" FontSize="32" Text="{x:Static res:Strings.SignUp_Page_Title}" FontFamily="InterSemiBold"/>
+
+            </StackLayout>
+            <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
+                <StackLayout Padding="5">
+                    <Label Padding="5" FontFamily="InterRegular" TextColor="{StaticResource SecondaryColor}" 
+                       FontSize="16" Text="{x:Static res:Strings.SignIn_Page_Email_Label}"/>
+                    <Grid>
+                        <Frame Opacity="1"  Padding="5" CornerRadius="5">
+                                <Entry  Placeholder="{x:Static res:Strings.SignIn_Page_Email_Placeholder}" 
+                                TextColor="Black" Margin="5,0"
+                                FontFamily="InterRegular"
+                                PlaceholderColor="Gray"
+                                Background="Transparent"
+                                Text="{Binding Email}"/>
+                        </Frame>
+                    </Grid>
+
+                    <Label Padding="0,20,0,5"  FontFamily="InterRegular" TextColor="{StaticResource SecondaryColor}" 
+                       FontSize="16" Text="{x:Static res:Strings.SignIn_Page_Password_Label}"/>
+                    <Grid>
+                        <Frame Opacity="1"  Padding="5" CornerRadius="5">
+                                <Entry  Placeholder="{x:Static res:Strings.SignIn_Page_Password_Placeholder}" 
+                                TextColor="Black" Margin="5,0"
+                                FontFamily="InterRegular"
+                                PlaceholderColor="Gray"
+                                Background="Transparent"
+                                IsPassword="True"
+                                Text="{Binding Password}"
+                                />
+                        </Frame>
+
+                    </Grid>
+
+                    <Label Padding="5" FontFamily="InterRegular" TextColor="{StaticResource SecondaryColor}" 
+                       FontSize="16" Text="{x:Static res:Strings.Page_PhoneLabel}"/>
+                    <Grid>
+                        <Frame Opacity="1"  Padding="5" CornerRadius="5">
+                                <Entry  Placeholder="{x:Static res:Strings.SignIn_Page_Phone_Placeholder}" 
+                                TextColor="Black" Margin="5,0"
+                                FontFamily="InterRegular"
+                                PlaceholderColor="Gray"
+                                Background="Transparent"
+                                Text="{Binding Phone}"/>
+                        </Frame>
+                    </Grid>
+                    <Label Padding="0,20,0,5"  FontFamily="InterRegular" TextColor="{StaticResource SecondaryColor}" 
+                       FontSize="16" Text="{x:Static res:Strings.SignIn_Page_FirstName_Label}"/>
+                    <Grid>
+                        <Frame Opacity="1"  Padding="5" CornerRadius="5">
+                                <Entry  Placeholder="{x:Static res:Strings.SignIn_Page_FirstName_Placeholder}" 
+                                TextColor="Black" Margin="5,0"
+                                FontFamily="InterRegular"
+                                PlaceholderColor="Gray"
+                                Background="Transparent"
+                                Text="{Binding FirstName}"
+                        />
+                        </Frame>
+
+                    </Grid>
+                    <Label Padding="0,20,0,5"  FontFamily="InterRegular" TextColor="{StaticResource SecondaryColor}" 
+                       FontSize="16" Text="{x:Static res:Strings.SignIn_Page_LastName_Label}"/>
+                    <Grid>
+                        <Frame Opacity="1"  Padding="5" CornerRadius="5">
+                                <Entry  Placeholder="{x:Static res:Strings.SignIn_Page_LastName_Placeholder}" 
+                                TextColor="Black" Margin="5,0"
+                                FontFamily="InterRegular"
+                                PlaceholderColor="Gray"
+                                Background="Transparent"
+                                Text="{Binding LastName}"
+                        />
+                        </Frame>
+
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+            <Button Style="{StaticResource ButtonOutline}" Margin="0,15" BackgroundColor="{StaticResource SecondaryColor}"
+                    Text="{x:Static res:Strings.Button_SignUp}" TextColor="White" Background="#FFC107" FontFamily="InterSemiBold" FontAttributes="Bold" 
+                    Command="{Binding RegisterCommand}"/>
+
+        </StackLayout>
+    </Grid>
+    </ScrollView>
+</ContentPage>
