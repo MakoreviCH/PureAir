@@ -30,7 +30,7 @@ This project utilizes a modern stack of technologies for each of its components:
 ![PureAir Frontend Demo](./assets/front_demo.gif)
 **Mobile Application:**
 *   .NET MAUI (for Android and iOS)
-
+![PureAir Frontend Demo](./assets/mobile_demo.gif)
 **IoT System:**
 *   Arduino C
 *   ESP8266 Wi-Fi Modules
@@ -38,7 +38,7 @@ This project utilizes a modern stack of technologies for each of its components:
     *   DHT-22 (Temperature & Humidity)
     *   MQ-135 (Air Quality & Gas)
     *   RC522 (RFID for employee tracking)
-
+![PureAir Frontend Demo](./assets/iot_demo.gif)
 ## Features
 
 *   **Real-time Monitoring:** Tracks air temperature, humidity, and gas quality in real-time.
