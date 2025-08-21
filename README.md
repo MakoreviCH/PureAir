@@ -12,6 +12,18 @@ The system is built on an N-tier, client-server architecture and consists of fou
 *   **Mobile Application:** An app for employees to monitor their environment's conditions and view their personal data.
 *   **IoT Devices:** Smart devices equipped with sensors to collect real-time data from the premises.
 
+## Features
+
+*   **Real-time Monitoring:** Tracks air temperature, humidity, and gas quality in real-time.
+*   **Administrator Dashboard:** Allows for comprehensive management of:
+    *   Employees and users
+    *   Workspaces and locations
+    *   Employee access passes (RFID)
+*   **Data Analytics:** Visualizes environmental data through interactive charts and provides insights into potential hazards.
+*   **Data Export:** Allows administrators to export filtered data to Excel for reporting.
+*   **Multi-language Support:** The user interface is available in both English and Ukrainian.
+*   **Mobile Access:** Employees can view workspace conditions and their personal profile data on the go.
+
 ### Built With
 
 This project utilizes a modern stack of technologies for each of its components:
@@ -28,9 +40,14 @@ This project utilizes a modern stack of technologies for each of its components:
 *   Material-UI
 *   Axios
 ![PureAir Frontend Demo](./assets/front_demo.gif)
+
+
+
 **Mobile Application:**
 *   .NET MAUI (for Android and iOS)
 ![PureAir Frontend Demo](./assets/mobile_demo.gif)
+
+
 **IoT System:**
 *   Arduino C
 *   ESP8266 Wi-Fi Modules
@@ -39,17 +56,7 @@ This project utilizes a modern stack of technologies for each of its components:
     *   MQ-135 (Air Quality & Gas)
     *   RC522 (RFID for employee tracking)
 ![PureAir Frontend Demo](./assets/iot_demo.gif)
-## Features
 
-*   **Real-time Monitoring:** Tracks air temperature, humidity, and gas quality in real-time.
-*   **Administrator Dashboard:** Allows for comprehensive management of:
-    *   Employees and users
-    *   Workspaces and locations
-    *   Employee access passes (RFID)
-*   **Data Analytics:** Visualizes environmental data through interactive charts and provides insights into potential hazards.
-*   **Data Export:** Allows administrators to export filtered data to Excel for reporting.
-*   **Multi-language Support:** The user interface is available in both English and Ukrainian.
-*   **Mobile Access:** Employees can view workspace conditions and their personal profile data on the go.
 
 ## Getting Started
 
