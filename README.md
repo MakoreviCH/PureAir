@@ -27,7 +27,7 @@ This project utilizes a modern stack of technologies for each of its components:
 *   JavaScript
 *   Material-UI
 *   Axios
-
+![PureAir Frontend Demo](./assets/front_demo.gif)
 **Mobile Application:**
 *   .NET MAUI (for Android and iOS)
 
